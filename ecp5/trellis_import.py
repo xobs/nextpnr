@@ -6,6 +6,7 @@ import json
 import pip_classes
 import timing_dbs
 from os import path
+import sys
 
 location_types = dict()
 type_at_location = dict()
@@ -14,8 +15,10 @@ tiletype_names = dict()
 parser = argparse.ArgumentParser(description="import ECP5 routing and bels from Project Trellis")
 parser.add_argument("device", type=str, help="target device")
 parser.add_argument("-p", "--constids", type=str, help="path to constids.inc")
+parser.add_argument("--output", type=str, help="path to output file")
 args = parser.parse_args()
-
+if args.output is not None:
+    sys.stdout = open(args.output, "w", buffering=16384, encoding="utf-8")
 
 def is_global(loc):
     return loc.x == -2 and loc.y == -2
