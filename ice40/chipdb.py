@@ -11,7 +11,10 @@ parser.add_argument("-p", "--constids", type=str, help="path to constids.inc")
 parser.add_argument("-g", "--gfxh", type=str, help="path to gfx.h")
 parser.add_argument("--fast", type=str, help="path to timing data for fast part")
 parser.add_argument("--slow", type=str, help="path to timing data for slow part")
+parser.add_argument("--output", type=str, help="path to output file")
 args = parser.parse_args()
+if args.output is not None:
+    sys.stdout = open(args.output, "w", buffering=16384, encoding="utf-8")
 
 dev_name = None
 dev_width = None
