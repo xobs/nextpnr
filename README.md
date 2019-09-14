@@ -155,6 +155,11 @@ The HeAP placer's solver can optionally use OpenMP for a speedup on very large d
 You can change the location where nextpnr will be installed (this will usually default to `/usr/local`) by using
 `-DCMAKE_INSTALL_PREFIX=/install/prefix`.
 
+You can also provide precompiled chipdb files in order to speed up compilation.  To do this, save the contents
+of `$target/chipdb/*.bin` and `$target/chipdb/*.bba` from a successful compilation, and then specify
+`-DPRECOMPILED_CHIPDB_ROOT=/path/to/chipdb` to use these files without regenerating them every time.
+This can also be useful for cross-compiling `nextpnr`.
+
 Notes for developers
 --------------------
 
